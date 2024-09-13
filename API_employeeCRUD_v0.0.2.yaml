@@ -1,0 +1,144 @@
+#######################################
+# SPECIFICATION                       #
+#######################################
+
+openapi: 3.0.0
+info:
+  title: Employees Management
+  version: '0.0.2'
+  description: This API allows you to manage information of the employees of Axpe Consulting
+  contact:
+    name: Luis Machado
+    email: LMachadoS@uxcale.com
+tags:
+  - name: Employees
+    description: Operations related to employee management
+servers:
+  - url: 'https://localhost:3000'
+
+
+#######################################
+# PATHS                               #
+#######################################
+
+paths:
+  '/employees':
+    description: 'This endpoint allows you to get a list of the employees in the company, add or delete an Employee or do another action'
+    get:
+      description: "Request for the list of employees in the company and returns it if everything goes well"
+      summary: "Requests for the list of employees"
+      operationId: get-employees
+      tags:
+        - Employees
+      security:
+        - OAuth2:
+          - read
+      responses:
+        '200': #Correct Request (returns employees list)
+          $ref: '#/components/responses/200List'
+        '204': #Correct Request (no info to return)
+          $ref: '#/components/responses/204'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '404': #Not Found
+          $ref: '#/components/responses/404'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
+
+#######################################
+# COMPONENTS                          #
+#######################################
+
+components:
+
+  #### Security Schemes
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://localhost:3000/oauth/auth'
+          tokenUrl: 'https://localhost:3000/oauth/token'
+          scopes:
+            read: Grants read access
+            write: Grants write access
+  
+  schemas:
+    Messages:
+      title: Messages
+      type: object
+      description: Model of message
+      properties:
+        messageCode:
+          type: string
+          maxLength: 50
+          pattern: ^.{1,50}$
+          description: Code of the message
+        messageTitle:
+          type: string
+          maxLength: 50
+          pattern: ^.{1,50}$
+          description: Title of the message
+        messageDescription:
+          type: string
+          maxLength: 100
+          pattern: ^.{1,100}$
+          description: Body of the message
+      required:
+        - messageCode
+        - messageTitle
+        - messageDescription
+
+
+  #### Schemas - Errors:
+    ErrorMessage:
+      title: ErrorMessage
+      type: object
+      description: Model of error response
+      allOf:
+        - $ref: '#/components/schemas/Messages'
+        - type: object
+          properties:
+            errorDetails:
+              type: string
+              maxLength: 200
+              pattern: ^.{1,200}$
+              description: Additional information about the error
+          required:
+            - errorDetails
+
+  #### Responses:
+  responses:
+    '404':
+      description: Not Found
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+          examples:
+            error404Example:
+              $ref: '#/components/examples/example-error404'
+
+
+
+  #### Examples:
+  examples:
+    example-error404:
+      value:
+        ErrorMessage:
+          - messageCode: '404'
+          - messageTitle: Not Found
+          - messageDescription: Resource not found
+          - errorDetails: The requested resource could not be found
