@@ -1,0 +1,700 @@
+openapi: 3.0.0
+info:
+  title: employeeCRUD
+  version: '1.0'
+  contact:
+    name: Luis Machado
+    email: LMachadoS@uxcale.com
+  description: API for the employee management of Axpe Consulting
+tags:
+  - name: Employees
+    description: Operations related to employee management
+servers:
+  - url: 'https://localhost:3000'
+paths:
+  '/employees/{employeeId}':
+    get:
+      summary: Get Employee Info by the Employee ID
+      tags:
+        - Employees
+      security:
+      - OAuth2:
+        - read
+      parameters:
+      - schema:
+          type: integer
+          format: int32
+          maximum: 10000
+          minimum: 1
+        name: employeeId
+        in: path
+        required: true
+        description: Id of an existing user.
+      responses:
+        '200': #Solicitud correcta con los datos del empleado
+          $ref: '#/components/responses/200'
+        '204': #Solicitud correcta pero sin información que mostrar
+          $ref: '#/components/responses/204'
+        '400': #Solicitud incorrecta por error de sintaxis
+          $ref: '#/components/responses/400'          
+        '404': #El recurso solicitado no se encontró
+          $ref: '#/components/responses/404'
+        '406': #No aceptado
+          $ref: '#/components/responses/406'
+        '429': #
+          $ref: '#/components/responses/406'
+        '500': #Error interno del servidor
+          $ref: '#/components/responses/500'
+        '503': #Servidor no disponible
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+      operationId: get-employees-employeeId
+      description: Retrieve the information of the employee with the matching employee ID.
+    put:
+      summary: 'Add an employee to the organization'
+      operationId: put-employees-employeeId
+      description: Add information of a new employee
+      tags:
+        - Employees
+      security:
+      - OAuth2:
+        - read
+        - write
+      parameters:
+      - schema:
+          type: integer
+          format: int32
+          maximum: 10000
+          minimum: 1
+        name: employeeId
+        in: path
+        required: true
+        description: Id of an existing user.
+      responses:
+        '200': #Solicitud correcta
+          $ref: '#/components/responses/200'
+        '201': #Solicitud correcta y nuevo recurso creado
+          $ref: '#/components/responses/201'
+        '204': #Solicitud correcta pero sin información que mostrar
+          $ref: '#/components/responses/204'
+        '400': #Solicitud incorrecta por error de sintaxis
+          $ref: '#/components/responses/400'          
+        '404': #El recurso solicitado no se encontró
+          $ref: '#/components/responses/404'
+        '406': #No aceptado
+          $ref: '#/components/responses/406'
+        '409': #Ha habido un conflicto (p.e.: el email ya está registrado)
+          $ref: '#/components/responses/409'
+        '422': #No se puede procesar la solicitud
+          $ref: '#/components/responses/422'
+        '500': #Error interno del servidor
+          $ref: '#/components/responses/500'
+        '503': #Servidor no disponible
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+            examples:
+              Post New Employee Rebecca Garcia:
+                value:
+                  id: 1
+                  username: rgarciac
+                  firstName: Rebecca
+                  lastName: Garcia
+                  lastName2: Calvo
+                  email: rgarciac@axpe.com
+                  identification: 
+                    type: NIF
+                    value: 12345678X
+                  phone: "+34657832122"
+                  incorporationDate: "02/03/2023"
+                  userStatus: pending
+    patch:
+      summary: Update Employee Information
+      operationId: patch-employees-employeeId
+      description: Update some information of the employee with the matching ID.
+      tags:
+        - Employees
+      security:
+      - OAuth2:
+        - write
+      parameters:
+      - schema:
+          type: integer
+          format: int32
+          maximum: 10000
+          minimum: 0
+        name: employeeId
+        in: path
+        required: true
+        description: Id of an existing user.
+      responses:
+        '200': #Solicitud correcta con los datos del empleado
+          $ref: '#/components/responses/200'
+        '204': #Solicitud correcta pero sin información que mostrar
+          $ref: '#/components/responses/204'
+        '400': #Solicitud incorrecta por error de sintaxis
+          $ref: '#/components/responses/400'          
+        '404': #El recurso solicitado no se encontró
+          $ref: '#/components/responses/404'
+        '406': #No aceptado
+          $ref: '#/components/responses/406'
+        '409': #Ha habido un conflicto (p.e.: el email ya está registrado)
+          $ref: '#/components/responses/409'
+        '422': #No se puede procesar la solicitud
+          $ref: '#/components/responses/422'
+        '500': #Error interno del servidor
+          $ref: '#/components/responses/500'
+        '503': #Servidor no disponible
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int32
+                  maximum: 10000
+                  minimum: 0
+                firstName:
+                  type: string
+                  maxLength: 50
+                  pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+              required:
+                - id
+              additionalProperties: false
+            examples:
+              Update First Name:
+                value:
+                  id: 1
+                  firstName: Rebecca
+        description: Patch user properties to update.
+  /employees:
+    description: List of employees
+    get:
+      summary: Get a list of employees
+      tags:
+        - Employees
+      security:
+      - OAuth2:
+        - read
+      responses:
+        '200': #Solicitud correcta con los datos del empleado
+          $ref: '#/components/responses/200'
+        '204': #Solicitud correcta pero sin información que mostrar
+          $ref: '#/components/responses/204'
+        '400': #Solicitud incorrecta por error de sintaxis
+          $ref: '#/components/responses/400'          
+        '404': #El recurso solicitado no se encontró
+          $ref: '#/components/responses/404'
+        '500': #Error interno del servidor
+          $ref: '#/components/responses/500'
+        '503': #Servidor no disponible
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+      operationId: get-employees
+      description: Get a list of employees in the organization
+    post:
+      summary: 'Add or replace an employee to the organization or do another operation'
+      operationId: post-employees
+      description: Add information of a new employee
+      tags:
+        - Employees
+      security:
+      - OAuth2:
+        - write
+      responses:
+        '200': #Solicitud correcta y recurso actualizado
+          $ref: '#/components/responses/200'
+        '201': #Solicitud correcta y nuevo recurso creado
+          $ref: '#/components/responses/201'
+        '202': #Solicitud aceptada
+          $ref: '#/components/responses/202'
+        '204': #Solicitud correcta pero sin información que mostrar
+          $ref: '#/components/responses/204'
+        '400': #Solicitud incorrecta por error de sintaxis
+          $ref: '#/components/responses/400'
+        '401': #No autenticado para realizar la operación solicitada
+          $ref: '#/components/responses/401'
+        '403': #No tiene permiso para realizar la operación solicitada
+          $ref: '#/components/responses/403'        
+        '404': #El recurso solicitado no se encontró
+          $ref: '#/components/responses/404'
+        '409': #Ha habido un conflicto (p.e.: el email ya está registrado)
+          $ref: '#/components/responses/409'
+        '422': #No se puede procesar la solicitud
+          $ref: '#/components/responses/422'
+        '500': #Error interno del servidor
+          $ref: '#/components/responses/500'
+        '503': #Servidor no disponible
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int32
+                  maximum: 10000
+                  minimum: 1
+                  description: Unique identifier for the given employee.
+                username:
+                  type: string
+                  maxLength: 20
+                  pattern: '^[a-zA-Z0-9]{1,20}$'
+                  description: Username of the employee.
+                firstName:
+                  type: string
+                  maxLength: 50
+                  pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+                  description: First name of the employee.
+                lastName:
+                  type: string
+                  maxLength: 50
+                  pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+                  description: First last name of the employee.
+                lastName2:
+                  type: string
+                  maxLength: 50
+                  pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'            
+                  description: Second last name of the employee.
+                identification:
+                  $ref: '#/components/schemas/Identification'
+                email:
+                  type: string
+                  maxLength: 50
+                  format: email
+                  pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                  description: Email of the employee.
+                  example: alice.smith@axpe.com
+                incorporationDate:
+                  type: string
+                  maxLength: 10
+                  pattern: '^\d{2}/\d{2}/\d{4}$'
+                  description: The date that the employee was hired.
+                phone:
+                  type: string
+                  maxLength: 20
+                  pattern: '^\+\d{2}\d{9}$'
+                  description: Phone number of the employee.
+                userStatus:
+                  type: string
+                  maxLength: 50
+                  enum:
+                    - pending
+                    - active
+                    - inactive
+                  description: 'Current status of the employee (e.g., pending, active, inactive).'
+              required:
+                - username
+                - firstName
+                - lastName
+                - lastName2
+                - email
+                - identification
+                - phone
+              additionalProperties: false
+            examples:
+              Post New Employee Rebecca Garcia:
+                value:
+                  username: rgarciac
+                  firstName: Rebecca
+                  lastName: Garcia
+                  lastName2: Calvo
+                  email: rgarciac@axpe.com
+                  identification: 
+                    type: NIF
+                    value: 12345678X
+                  phone: "+34657832122"
+                  incorporationDate: "02/03/2023"
+                  userStatus: pending
+  '/employees/{employeeId}/email/validate':
+    description: Validates the email of the employee with the indicated id
+    post:
+      summary: 'Validates the email of the employee with the indicated id'
+      operationId: post-employees-employeeId-email-validate
+      description: Validates the email of the employee with the indicated id
+      tags:
+        - Employees
+      security:
+      - OAuth2:
+        - write
+      parameters:
+      - schema:
+          type: integer
+          format: int32
+          maximum: 10000
+          minimum: 1
+        name: employeeId
+        in: path
+        required: true
+        description: Id of an existing user.
+      responses:
+        '200': #Solicitud correcta y recurso actualizado
+          $ref: '#/components/responses/200'
+        '201': #Solicitud correcta y nuevo recurso creado
+          $ref: '#/components/responses/201'
+        '202': #Solicitud aceptada
+          $ref: '#/components/responses/202'
+        '204': #Solicitud correcta pero sin información que mostrar
+          $ref: '#/components/responses/204'
+        '400': #Solicitud incorrecta por error de sintaxis
+          $ref: '#/components/responses/400'
+        '401': #No autenticado para realizar la operación solicitada
+          $ref: '#/components/responses/401'
+        '403': #No tiene permiso para realizar la operación solicitada
+          $ref: '#/components/responses/403'        
+        '404': #El recurso solicitado no se encontró
+          $ref: '#/components/responses/404'
+        '409': #Ha habido un conflicto (p.e.: el email ya está registrado)
+          $ref: '#/components/responses/409'
+        '422': #No se puede procesar la solicitud
+          $ref: '#/components/responses/422'
+        '500': #Error interno del servidor
+          $ref: '#/components/responses/500'
+        '503': #Servidor no disponible
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  maxLength: 50
+                  format: email
+                  pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                  description: Email of the employee.
+                  example: alice.smith@axpe.com
+              required:
+                - email
+              additionalProperties: false
+            examples:
+              Validates email address of Rebecca Garcia:
+                value:
+                  email: rgarciac@axpe.com
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://localhost:3000/oauth/auth'
+          tokenUrl: 'https://localhost:3000/oauth/token'
+          scopes:
+            read: Grants read access
+            write: Grants write access
+  schemas:
+    Employee:
+      title: Employee
+      type: object
+      description: Object that describes an Employee entity
+      x-examples:
+        Jose Miguel Ruiz Ruiz:
+          id: 1
+          username: josemi
+          firstName: Jose Miguel
+          lastName: Ruiz
+          lastName2: Ruiz
+          identification:
+            value: 70888999A
+            type: NIF
+          email: john@mail.com
+          incorporationDate: '2022-08-06'
+          phone: '+34123456789'
+          userStatus: pending
+      properties:
+        id:
+          type: integer
+          format: int32
+          maximum: 10000
+          minimum: 1
+          description: Unique identifier for the given employee.
+        username:
+          type: string
+          maxLength: 20
+          pattern: '^[a-zA-Z0-9]{1,20}$'
+          description: Username of the employee.
+        firstName:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: First name of the employee.
+        lastName:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: First last name of the employee.
+        lastName2:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: Second last name of the employee.
+        identification:
+          $ref: '#/components/schemas/Identification'
+        email:
+          type: string
+          format: email
+          maxLength: 100
+          pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+          description: Email of the employee.
+          example: alice.smith@axpe.com
+        incorporationDate:
+          type: string
+          maxLength: 10
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: The date that the employee was hired.
+        phone:
+          type: string
+          maxLength: 20
+          pattern: '^\+\d{2}\d{9}$'
+          description: Phone number of the employee.
+        userStatus:
+          type: string
+          enum:
+            - pending
+            - active
+            - inactive
+          description: 'Current status of the employee (e.g., pending, active, inactive).'
+      required:
+        - id
+        - username
+        - firstName
+        - lastName
+        - lastName2
+        - email
+        - identification
+        - phone
+      additionalProperties: false
+    Identification:
+      title: Identification
+      type: object
+      description: Object that describes an Identification entity.
+      x-examples:
+        12345678A:
+          value: 12345678A
+          type: NIF
+      properties:
+        value:
+          type: string
+          pattern: '^\d{8}[A-Za-z]$'
+          description: Identifier of the employee (8 numeric characters followed by 1 letter).
+        type:
+          type: string
+          enum:
+            - NIF
+            - NIE
+          description: Identification type (NIF or NIE).
+      required:
+        - value
+        - type
+      additionalProperties: false
+  responses:
+    '200':
+      description: Correct response including the information of the Employee
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Employee'
+          examples:
+            Get Employee Jose Miguel Ruiz Ruiz:
+              value:
+                id: 1
+                username: josemi
+                firstName: Jose Miguel
+                lastName: Ruiz
+                lastName2: Ruiz
+                identification:
+                  value: 70888999A
+                  type: NIF
+                email: john@mail.com
+                incorporationDate: '02/08/2022'
+                phone: '+34123456789'
+                userStatus: pending
+    '201':
+      description: Request successful, new employee created (their information is returned)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Employee'
+          examples:
+            Put Employee Jose Miguel Ruiz Ruiz:
+              value:
+                id: 1
+                username: josemi
+                firstName: Jose Miguel
+                lastName: Ruiz
+                lastName2: Ruiz
+                identification:
+                  value: 70888999A
+                  type: NIF
+                email: john@mail.com
+                incorporationDate: '06/08/2022'
+                phone: '+34123456789'
+                userStatus: pending
+    '202':
+      description: Request accepted but not completed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Request Accepted"
+            additionalProperties: false
+    '204':
+          description: No Content - Employee successfully deleted.
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Bad Request"
+            additionalProperties: false
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Unauthorized"
+            additionalProperties: false
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Forbidden"
+            additionalProperties: false
+    '404':
+      description: Employee not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Not Found"
+            additionalProperties: false
+    '406':
+      description: Not Acceptable - The server cannot produce a response matching the list of acceptable values.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Not Acceptable - Requested format not supported."
+            additionalProperties: false
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Conflict"
+            additionalProperties: false
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Unprocessable Entity"
+            additionalProperties: false
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Internal Server Error"
+            additionalProperties: false
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "Service Unavailable"
+            additionalProperties: false
+    default:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                maxLength: 50
+                pattern: '^.{1,50}$'
+                example: "An unexpected error occurred."
+            additionalProperties: false
