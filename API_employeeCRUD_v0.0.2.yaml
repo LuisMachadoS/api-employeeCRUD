@@ -72,7 +72,127 @@ components:
             read: Grants read access
             write: Grants write access
   
+
   schemas:
+  #### Schemas - Employee object:
+    Employee:
+      title: Employee
+      type: object
+      description: Object that describes an Employee entity
+      properties:
+        id:
+          type: integer
+          format: int32
+          maximum: 10000
+          minimum: 1
+          description: Unique identifier for the given employee.
+        firstName:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: First name of the employee.
+        lastName:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: First last name of the employee.
+        lastName2:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: Second last name of the employee.
+        identification:
+          $ref: '#/components/schemas/Identification'
+        email:
+          type: string
+          format: email
+          maxLength: 100
+          pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+          description: Email of the employee.
+          example: alice.smith@axpe.com
+        incorporationDate:
+          type: string
+          maxLength: 10
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: The date that the employee was hired.
+        phone:
+          type: string
+          maxLength: 20
+          pattern: '^\+\d{2}\d{9}$'
+          description: Phone number of the employee.
+        userStatus:
+          type: string
+          enum:
+            - pending
+            - active
+            - inactive
+          description: 'Current status of the employee (e.g., pending, active, inactive).'
+      required:
+        - id
+        - firstName
+        - lastName
+        - lastName2
+        - email
+        - identification
+        - phone
+
+
+  #### Schemas - Employee (reduced) object:
+    EmployeeEssentialData:
+      title: EmployeeEssentialData
+      type: object
+      description: Object that describes a reduced version of an Employee entity
+      properties:
+        id:
+          type: integer
+          format: int32
+          maximum: 10000
+          minimum: 1
+          description: Unique identifier for the given employee.
+        firstName:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: First name of the employee.
+        lastName:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: First last name of the employee.
+        lastName2:
+          type: string
+          maxLength: 50
+          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          description: Second last name of the employee.
+      required:
+        - id
+        - firstName
+        - lastName
+        - lastName2
+
+
+  #### Schemas - Identification object:
+    Identification:
+      title: Identification
+      type: object
+      description: Object that describes an Identification entity.
+      properties:
+        value:
+          type: string
+          pattern: '^\d{8}[A-Za-z]$'
+          description: Identifier of the employee (8 numeric characters followed by 1 letter).
+        type:
+          type: string
+          enum:
+            - NIF
+            - NIE
+          description: Identification type (NIF or NIE).
+      required:
+        - value
+        - type
+
+
+  #### Schemas - Messages:
     Messages:
       title: Messages
       type: object
@@ -116,8 +236,83 @@ components:
           required:
             - errorDetails
 
-  #### Responses:
+  #### Responses: 200List, 200Detail, 204, 400, 401, 403, 404, 500, 503, Default
   responses:
+    '200List':
+      description: successful response, returns a list of employees
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EmployeeEssentialData'
+          examples:
+            returnListOfEmployeesExample:
+              $ref: '#/components/examples/example-employee-list'
+
+    '200Detail':
+      description: successful response, returns the information of the requested employee
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Employee'
+          examples:
+            returnEmployeeInformationExample:
+              $ref: '#/components/examples/example-employee-information'
+
+    '204':
+      description: successful response, no content returned
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+
+    '400':
+      description: Bad request. The request could not be processed due to invalid input
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+          examples:
+            error400Example:
+              $ref: '#/components/examples/example-error400'
+
+    '401':
+      description: Unauthorized. Authentication is required or has failed
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+          examples:
+            error401Example:
+              $ref: '#/components/examples/example-error401'
+
+    '403':
+      description: Forbidden. The client does not have access rights to the content.
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+          examples:
+            error403Example:
+              $ref: '#/components/examples/example-error403'
+
     '404':
       description: Not Found
       headers:
@@ -131,14 +326,138 @@ components:
             error404Example:
               $ref: '#/components/examples/example-error404'
 
+    '500':
+      description: Internal server error. The server encountered an unexpected condition.
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+          examples:
+            error500Example:
+              $ref: '#/components/examples/example-error500'
+
+    '503':
+      description: Service unavailable. The server is temporarily unable to handle the request.
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+          examples:
+            error503Example:
+              $ref: '#/components/examples/example-error503'
+
+    'default':
+      description: Unexpected error
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+          examples:
+            errorDefaultExample:
+              $ref: '#/components/examples/example-errorDefault'
+
+  #### Headers:
+  headers:
+    XRequestIdHeader:
+      description: Unique Identifier for each request, following the UUID format (RFC-4122)
+      schema:
+        type: string
+        format: uuid
+      required: true
+
 
 
   #### Examples:
   examples:
+    #### Examples - Errors:
+    example-error400:
+      value:
+        ErrorMessage:
+          - messageCode: '400'
+          - messageTitle: Bad Request
+          - messageDescription: Client has made an invalid request.
+          - errorDetails: The request could not be processed due to invalid input.
+    example-error401:
+      value:
+        ErrorMessage:
+          - messageCode: '401'
+          - messageTitle: Unauthorized
+          - messageDescription: Authentication is required or has failed.
+          - errorDetails: The provided API key is invalid.
+    example-error403:
+      value:
+        ErrorMessage:
+          - messageCode: '403'
+          - messageTitle: Forbidden
+          - messageDescription: The client does not have access rights to the content.
+          - errorDetails: You do not have permission to access this resource.
     example-error404:
       value:
         ErrorMessage:
           - messageCode: '404'
           - messageTitle: Not Found
-          - messageDescription: Resource not found
-          - errorDetails: The requested resource could not be found
+          - messageDescription: Resource not found.
+          - errorDetails: The requested resource could not be found.
+    example-error500:
+      value:
+        ErrorMessage:
+          - messageCode: '500'
+          - messageTitle: Internal Server Error
+          - messageDescription: The server encountered an unexpected condition.
+          - errorDetails: An unexpected error occurred. Please try again later.
+    example-error503:
+      value:
+        ErrorMessage:
+          - messageCode: '503'
+          - messageTitle: Service Unavailable
+          - messageDescription: The server is temporarily unable to handle the request.
+          - errorDetails: The server is currently undergoing maintenance. Please try again later.
+    example-errorDefault:
+      value:
+        ErrorMessage:
+          - messageCode: 'default'
+          - messageTitle: Service Unavailable
+          - messageDescription: The server is temporarily unable to handle the request.
+          - errorDetails: The server is currently undergoing maintenance. Please try again later.
+    
+    #### Examples - List of employees:
+    example-employee-list:
+      value:
+        - id: 34
+          firstName: "Lucas"
+          lastName: "Correa"
+          lastName2: "De la Iglesia"
+        - id: 35
+          firstName: "Rebeca"
+          lastName: "García"
+          lastName2: "Zamorano"
+        - id: 36
+          firstName: "Andrés"
+          lastName: "Marcos"
+          lastName2: "Bracamonte"
+        - id: 37
+          firstName: "Francisco"
+          lastName: "Martín"
+          lastName2: "Martín"
+    
+    #### Examples - Employee information:
+    example-employee-information:
+      value:
+        - id: 34
+          firstName: "Lucas"
+          lastName: "Correa"
+          lastName2: "De la Iglesia"
+          email: "lcorread@axpe.com"
+          identification:
+            - type: NIF
+            - value: 12345678X
+          phone: "+34654321987"
