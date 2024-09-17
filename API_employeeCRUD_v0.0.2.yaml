@@ -53,6 +53,39 @@ paths:
         'default':
           $ref: '#/components/responses/default'
 
+    post:
+      description: "Create a new employee. Send the new employee's data in the request body"
+      summary: "Creates a new employee"
+      operationId: post-employees
+      tags:
+        - Employees
+      #security:
+      #  - OAuth2:
+      #    - read
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201': #Created (returns the new employee's information)
+          $ref: '#/components/responses/201'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '409': #Conflict
+          $ref: '#/components/responses/409'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
 
 #######################################
 # COMPONENTS                          #
@@ -89,17 +122,17 @@ components:
         firstName:
           type: string
           maxLength: 50
-          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          pattern: '^[A-Z][a-z]*( [A-Z][a-z]*)*$'
           description: First name of the employee.
         lastName:
           type: string
           maxLength: 50
-          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          pattern: '^[A-Z][a-z]*( [A-Z][a-z]*)*$'
           description: First last name of the employee.
         lastName2:
           type: string
           maxLength: 50
-          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          pattern: '^^[A-Z][a-z]*( [A-Z][a-z]*)*$'
           description: Second last name of the employee.
         identification:
           $ref: '#/components/schemas/Identification'
@@ -152,23 +185,24 @@ components:
         firstName:
           type: string
           maxLength: 50
-          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          pattern: '^[A-Z][a-z]*( [A-Z][a-z]*)*$'
           description: First name of the employee.
         lastName:
           type: string
           maxLength: 50
-          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          pattern: '^[A-Z][a-z]*( [A-Z][a-z]*)*$'
           description: First last name of the employee.
         lastName2:
           type: string
           maxLength: 50
-          pattern: '^([A-Z][a-z]*)( [A-Z][a-z]*)*$'
+          pattern: '^[A-Z][a-z]*( [A-Z][a-z]*)*$'
           description: Second last name of the employee.
       required:
         - id
         - firstName
         - lastName
         - lastName2
+      additionalProperties: false
 
 
   #### Schemas - Identification object:
@@ -235,6 +269,7 @@ components:
               description: Additional information about the error
           required:
             - errorDetails
+          additionalProperties: false
 
   #### Responses: 200List, 200Detail, 204, 400, 401, 403, 404, 500, 503, Default
   responses:
@@ -246,9 +281,32 @@ components:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/EmployeeEssentialData'
+            type: object
+            properties:
+              totalItems:
+                type: integer
+                format: int32
+                maximum: 1000
+                minimum: 0
+                description: total number of items available (without pagination)
+              offset:
+                type: integer
+                format: int32
+                maximum: 1000
+                minimum: 0
+                description: starting position of the current page
+              limit:
+                type: integer
+                format: int32
+                maximum: 1000
+                minimum: 0
+                description: maximun number of items per page
+              items:
+                type: array
+                maxItems: 1000 ##42c
+                items:
+                  $ref: '#/components/schemas/EmployeeEssentialData'
+            additionalProperties: false
           examples:
             returnListOfEmployeesExample:
               $ref: '#/components/examples/example-employee-list'
@@ -261,9 +319,22 @@ components:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/Employee'
+            $ref: '#/components/schemas/Employee'
+          examples:
+            returnEmployeeInformationExample:
+              $ref: '#/components/examples/example-employee-information'
+
+    '201':
+      description: successful response, employee created, returns the information of the created employee
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+        location:
+          $ref: '#/components/headers/locationHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Employee'
           examples:
             returnEmployeeInformationExample:
               $ref: '#/components/examples/example-employee-information'
@@ -326,6 +397,19 @@ components:
             error404Example:
               $ref: '#/components/examples/example-error404'
 
+    '409':
+      description: Conflict
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+          examples:
+            error409Example:
+              $ref: '#/components/examples/example-error409'
+
     '500':
       description: Internal server error. The server encountered an unexpected condition.
       headers:
@@ -372,12 +456,23 @@ components:
       schema:
         type: string
         format: uuid
+        maxLength: 36
+        pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
+      required: true
+    locationHeader:
+      description: URL of the new employee
+      schema:
+        type: string
+        format: uri
+        maxLength: 255
+        pattern: '^https:\/\/[a-zA-Z0-9.-]+\/employees\/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
       required: true
 
 
 
   #### Examples:
   examples:
+    
     #### Examples - Errors:
     example-error400:
       value:
@@ -407,6 +502,13 @@ components:
           - messageTitle: Not Found
           - messageDescription: Resource not found.
           - errorDetails: The requested resource could not be found.
+    example-error409:
+      value:
+        ErrorMessage:
+          - messageCode: '409'
+          - messageTitle: Conflict
+          - messageDescription: A conflict has occurred.
+          - errorDetails: There is already an employee with that email registered.
     example-error500:
       value:
         ErrorMessage:
