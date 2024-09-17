@@ -2,7 +2,7 @@
 # SPECIFICATION                       #
 #######################################
 
-openapi: 3.0.0
+openapi: 3.0.3
 info:
   title: Employees Management
   version: '0.0.2'
@@ -30,9 +30,9 @@ paths:
       operationId: get-employees
       tags:
         - Employees
-      security:
-        - OAuth2:
-          - read
+      #security:
+      #  - OAuth2:
+      #    - read
       responses:
         '200': #Correct Request (returns employees list)
           $ref: '#/components/responses/200List'
@@ -54,6 +54,78 @@ paths:
           $ref: '#/components/responses/default'
 
     post:
+      description: "Create a new employee. Send the new employee's data in the request body"
+      summary: "Creates a new employee"
+      operationId: post-employees
+      tags:
+        - Employees
+      security:
+        - OAuth2:
+          - read
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201': #Created (returns the new employee's information)
+          $ref: '#/components/responses/201'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '409': #Conflict
+          $ref: '#/components/responses/409'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
+  '/employees/{employeeId}':
+    description: 'This endpoint allows you to get a list of the employees in the company, add or delete an Employee or do another action'
+    get:
+      description: "Request for the information of an employee by their ID and returns it"
+      summary: "Request for the information of an employee by id"
+      operationId: get-employee-employeeId
+      tags:
+        - Employees
+      security:
+        - OAuth2:
+          - read
+      parameters:
+        - schema:
+            type: integer
+            format: int32
+            maximum: 10000
+            minimum: 1
+          name: employeeId
+          in: path
+          required: true
+          description: ID of an existing employee
+      responses:
+        '200': #Correct Request (returns employee's information)
+          $ref: '#/components/responses/200Detail'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '404': #Not Found
+          $ref: '#/components/responses/404'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
+    put: ### OJO: No implementada!
       description: "Create a new employee. Send the new employee's data in the request body"
       summary: "Creates a new employee"
       operationId: post-employees
@@ -85,6 +157,75 @@ paths:
           $ref: '#/components/responses/503'
         'default':
           $ref: '#/components/responses/default'
+
+    patch: ### OJO: No implementada!
+      description: "Create a new employee. Send the new employee's data in the request body"
+      summary: "Creates a new employee"
+      operationId: post-employees
+      tags:
+        - Employees
+      #security:
+      #  - OAuth2:
+      #    - read
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201': #Created (returns the new employee's information)
+          $ref: '#/components/responses/201'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '409': #Conflict
+          $ref: '#/components/responses/409'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
+    delete: ### OJO: No implementada!
+      description: "Create a new employee. Send the new employee's data in the request body"
+      summary: "Creates a new employee"
+      operationId: post-employees
+      tags:
+        - Employees
+      #security:
+      #  - OAuth2:
+      #    - read
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201': #Created (returns the new employee's information)
+          $ref: '#/components/responses/201'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '409': #Conflict
+          $ref: '#/components/responses/409'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
+
+
 
 
 #######################################
