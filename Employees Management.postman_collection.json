@@ -1,0 +1,3592 @@
+{
+	"info": {
+		"_postman_id": "33ae3ba2-adf3-44b8-b5ef-30c4f776ed70",
+		"name": "Employees Management",
+		"description": "This API allows you to manage information of the employees of Axpe Consulting\n\nContact Support:\n Name: Luis Machado\n Email: LMachadoS@uxcale.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38062173"
+	},
+	"item": [
+		{
+			"name": "employees",
+			"item": [
+				{
+					"name": "{employeeId}",
+					"item": [
+						{
+							"name": "email",
+							"item": [
+								{
+									"name": "validate",
+									"item": [
+										{
+											"name": "Validates de email of an employee",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"employees",
+														":employeeId",
+														"email",
+														"validate"
+													],
+													"variable": [
+														{
+															"key": "employeeId",
+															"value": "<integer>",
+															"description": "(Required) ID of an existing employee"
+														}
+													]
+												},
+												"description": "Validates de email of an employee. Sends the email of the employee which email is in the path and validates if exists or not"
+											},
+											"response": [
+												{
+													"name": "successful response, employee created, returns the information of the created employee",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"employees",
+																":employeeId",
+																"email",
+																"validate"
+															],
+															"variable": [
+																{
+																	"key": "employeeId"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "X-Request-ID",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "location",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}"
+												},
+												{
+													"name": "Bad request. The request could not be processed due to invalid input",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"employees",
+																":employeeId",
+																"email",
+																"validate"
+															],
+															"variable": [
+																{
+																	"key": "employeeId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "X-Request-ID",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+												},
+												{
+													"name": "Unauthorized. Authentication is required or has failed",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"employees",
+																":employeeId",
+																"email",
+																"validate"
+															],
+															"variable": [
+																{
+																	"key": "employeeId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "X-Request-ID",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+												},
+												{
+													"name": "Forbidden. The client does not have access rights to the content.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"employees",
+																":employeeId",
+																"email",
+																"validate"
+															],
+															"variable": [
+																{
+																	"key": "employeeId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "X-Request-ID",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+												},
+												{
+													"name": "Conflict",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"employees",
+																":employeeId",
+																"email",
+																"validate"
+															],
+															"variable": [
+																{
+																	"key": "employeeId"
+																}
+															]
+														}
+													},
+													"status": "Conflict",
+													"code": 409,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "X-Request-ID",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+												},
+												{
+													"name": "Internal server error. The server encountered an unexpected condition.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"employees",
+																":employeeId",
+																"email",
+																"validate"
+															],
+															"variable": [
+																{
+																	"key": "employeeId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "X-Request-ID",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+												},
+												{
+													"name": "Service unavailable. The server is temporarily unable to handle the request.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"employees",
+																":employeeId",
+																"email",
+																"validate"
+															],
+															"variable": [
+																{
+																	"key": "employeeId"
+																}
+															]
+														}
+													},
+													"status": "Service Unavailable",
+													"code": 503,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "X-Request-ID",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+												},
+												{
+													"name": "Unexpected error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"K@SomHmUT5.YqcIJCCzGkf\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/employees/:employeeId/email/validate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"employees",
+																":employeeId",
+																"email",
+																"validate"
+															],
+															"variable": [
+																{
+																	"key": "employeeId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "X-Request-ID",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Request for the information of an employee by id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees/:employeeId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees",
+										":employeeId"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "<integer>",
+											"description": "(Required) ID of an existing employee"
+										}
+									]
+								},
+								"description": "Request for the information of an employee by their ID and returns it"
+							},
+							"response": [
+								{
+									"name": "successful response, returns the information of the requested employee",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}"
+								},
+								{
+									"name": "Bad request. The request could not be processed due to invalid input",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Unauthorized. Authentication is required or has failed",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Forbidden. The client does not have access rights to the content.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Internal server error. The server encountered an unexpected condition.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Service unavailable. The server is temporarily unable to handle the request.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Unexpected error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Completely update an employee",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees/:employeeId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees",
+										":employeeId"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "<integer>",
+											"description": "(Required) ID of an existing employee"
+										}
+									]
+								},
+								"description": "Completely update an employee. Send the new employee's details in the body of the request"
+							},
+							"response": [
+								{
+									"name": "successful response, returns the information of the requested employee",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}"
+								},
+								{
+									"name": "Bad request. The request could not be processed due to invalid input",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Unauthorized. Authentication is required or has failed",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Forbidden. The client does not have access rights to the content.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Conflict",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Internal server error. The server encountered an unexpected condition.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Service unavailable. The server is temporarily unable to handle the request.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Unexpected error",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Partially update an employee",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees/:employeeId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees",
+										":employeeId"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "<integer>",
+											"description": "(Required) ID of an existing employee"
+										}
+									]
+								},
+								"description": "Partially update an employee. Send the new employee's details in the body of the request"
+							},
+							"response": [
+								{
+									"name": "successful response, returns the information of the requested employee",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}"
+								},
+								{
+									"name": "Bad request. The request could not be processed due to invalid input",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Unauthorized. Authentication is required or has failed",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Forbidden. The client does not have access rights to the content.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Conflict",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Internal server error. The server encountered an unexpected condition.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Service unavailable. The server is temporarily unable to handle the request.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Unexpected error",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"firstName\": \"Hupozgo Aovxzgogijo\",\n  \"lastName\": \"Kxuf Z Aafslspejns Difg Lmcs Omjpnr Oxwfr Phi\",\n  \"lastName2\": \"Dkvyp Qwng\",\n  \"identification\": {\n    \"value\": \"53595370J\",\n    \"type\": \"NIE\"\n  },\n  \"email\": \"lmM@iMPh.sYmB\",\n  \"incorporationDate\": \"88/69/9280\",\n  \"phone\": \"+92696813006\",\n  \"userStatus\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Creates a new employee",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees/:employeeId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees",
+										":employeeId"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "<integer>",
+											"description": "(Required) ID of an existing employee"
+										}
+									]
+								},
+								"description": "Create a new employee. Send the new employee's data in the request body"
+							},
+							"response": [
+								{
+									"name": "successful response, no content returned",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Bad request. The request could not be processed due to invalid input",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Unauthorized. Authentication is required or has failed",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Forbidden. The client does not have access rights to the content.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Conflict",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Internal server error. The server encountered an unexpected condition.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Service unavailable. The server is temporarily unable to handle the request.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								},
+								{
+									"name": "Unexpected error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/:employeeId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												":employeeId"
+											],
+											"variable": [
+												{
+													"key": "employeeId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Request-ID",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Requests for the list of employees",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/employees",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employees"
+							]
+						},
+						"description": "Request for the list of employees in the company and returns it if everything goes well"
+					},
+					"response": [
+						{
+							"name": "successful response, returns a list of employees",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"totalItems\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<integer>\",\n      \"firstName\": \"Kbéclnjmvqd Pzdbfuf Úépúíñwg Epspp Bgoñóéémt Oex L\",\n      \"lastName\": \"Yídnogúizzi Sórreó Y R Bdpjcc Sñp Xégzéhñvd Fxuu Y\",\n      \"lastName2\": \"Dó Sxrzfkr Ruiyvq Áaupndéiz Púrzbbs Dh Ohu Jfso Áb\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"firstName\": \"Gimód Bxxdsellh Lqlípvákg Cdu\",\n      \"lastName\": \"Wnmúrbft Ikbdnñdr Cñglíj Éeíñzníñrqp Ecñ Íhzgóúfc \",\n      \"lastName2\": \"K\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "successful response, no content returned",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad request. The request could not be processed due to invalid input",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Unauthorized. Authentication is required or has failed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Forbidden. The client does not have access rights to the content.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Internal server error. The server encountered an unexpected condition.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Service unavailable. The server is temporarily unable to handle the request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Creates a new employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/employees",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employees"
+							]
+						},
+						"description": "Create a new employee. Send the new employee's data in the request body"
+					},
+					"response": [
+						{
+							"name": "successful response, employee created, returns the information of the created employee",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "location",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}"
+						},
+						{
+							"name": "Bad request. The request could not be processed due to invalid input",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Unauthorized. Authentication is required or has failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Forbidden. The client does not have access rights to the content.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Internal server error. The server encountered an unexpected condition.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Service unavailable. The server is temporarily unable to handle the request.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						},
+						{
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"R V Xnagjtcrpc Jituhdqey Ytzdgplhymy Jgjpxdxgu P I\",\n  \"lastName\": \"Kofkuimyha\",\n  \"lastName2\": \"Gojhwvxhino Hupxulw Laryouhfc At Vprqttbohy\",\n  \"email\": \"e-zz@KACg.UhuGVxjiNMaO\",\n  \"identification\": {\n    \"value\": \"40580420A\",\n    \"type\": \"NIF\"\n  },\n  \"phone\": \"+74215288515\",\n  \"id\": \"<integer>\",\n  \"incorporationDate\": \"72/49/0269\",\n  \"userStatus\": \"active\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"messageCode\": \"l:9\\\\^sl0M;HTT@dh6rzLrG`NL|Y-X}j>M!H/eGEO`\",\n  \"messageTitle\": \"@#|/#RN^jv6f}3KrU+2?YVsV#%[H\",\n  \"messageDescription\": \"e0b2*+)0clc{,a=S]Dy._\\\\X?Rfow'QryXAynh_H0,^w*~b#dhE*2[5(RmiHK$|uzVM2W*zJXOX6A)`*>j?_8$hH)!%N^~C;O 4hZc(43I #$.EE\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:4010"
+		}
+	]
+}
