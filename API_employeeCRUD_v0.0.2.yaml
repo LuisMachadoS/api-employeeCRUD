@@ -14,7 +14,7 @@ tags:
   - name: Employees
     description: Operations related to employee management
 servers:
-  - url: 'https://localhost:3000'
+  - url: 'http://127.0.0.1:4010'
 
 
 #######################################
@@ -24,7 +24,8 @@ servers:
 paths:
   '/employees':
     description: 'This endpoint allows you to get a list of the employees in the company, add or delete an Employee or do another action'
-    get:
+    
+    get: #Seguridad desactivada de momento
       description: "Request for the list of employees in the company and returns it if everything goes well"
       summary: "Requests for the list of employees"
       operationId: get-employees
@@ -53,21 +54,24 @@ paths:
         'default':
           $ref: '#/components/responses/default'
 
-    post:
+    post: #Seguridad desactivada de momento
       description: "Create a new employee. Send the new employee's data in the request body"
       summary: "Creates a new employee"
       operationId: post-employees
       tags:
         - Employees
-      security:
-        - OAuth2:
-          - read
+      #security:
+      #  - OAuth2:
+      #    - read
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Employee'
+            examples:
+              newEmployee:
+                $ref: '#/components/examples/example-employee-information'
       responses:
         '201': #Created (returns the new employee's information)
           $ref: '#/components/responses/201'
@@ -85,28 +89,22 @@ paths:
           $ref: '#/components/responses/503'
         'default':
           $ref: '#/components/responses/default'
+      
 
   '/employees/{employeeId}':
     description: 'This endpoint allows you to get a list of the employees in the company, add or delete an Employee or do another action'
-    get:
+    parameters:
+      - $ref: '#/components/parameters/employeeId'
+    
+    get: #Seguridad desactivada de momento
       description: "Request for the information of an employee by their ID and returns it"
       summary: "Request for the information of an employee by id"
       operationId: get-employee-employeeId
       tags:
         - Employees
-      security:
-        - OAuth2:
-          - read
-      parameters:
-        - schema:
-            type: integer
-            format: int32
-            maximum: 10000
-            minimum: 1
-          name: employeeId
-          in: path
-          required: true
-          description: ID of an existing employee
+      #security:
+      #  - OAuth2:
+      #    - read
       responses:
         '200': #Correct Request (returns employee's information)
           $ref: '#/components/responses/200Detail'
@@ -125,10 +123,10 @@ paths:
         'default':
           $ref: '#/components/responses/default'
 
-    put: ### OJO: No implementada!
-      description: "Create a new employee. Send the new employee's data in the request body"
-      summary: "Creates a new employee"
-      operationId: post-employees
+    put: #Seguridad desactivada de momento
+      description: "Completely update an employee. Send the new employee's details in the body of the request"
+      summary: "Completely update an employee"
+      operationId: put-employee-id
       tags:
         - Employees
       #security:
@@ -141,8 +139,130 @@ paths:
             schema:
               $ref: '#/components/schemas/Employee'
       responses:
-        '201': #Created (returns the new employee's information)
-          $ref: '#/components/responses/201'
+        '200': #Updated succesfully (returns detail of employee's information)
+          $ref: '#/components/responses/200Detail'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '404': #Not found
+          $ref: '#/components/responses/404'
+        '409': #Conflict
+          $ref: '#/components/responses/409'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
+    patch: #Seguridad desactivada de momento
+      description: "Partially update an employee. Send the new employee's details in the body of the request"
+      summary: "Partially update an employee"
+      operationId: patch-employee-id
+      tags:
+        - Employees
+      #security:
+      #  - OAuth2:
+      #    - read
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeePartial'
+      responses:
+        '200': #Updated succesfully (returns detail of employee's information)
+          $ref: '#/components/responses/200Detail'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '404': #Not found
+          $ref: '#/components/responses/404'
+        '409': #Conflict
+          $ref: '#/components/responses/409'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
+    delete: #Seguridad desactivada de momento
+      description: "Create a new employee. Send the new employee's data in the request body"
+      summary: "Creates a new employee"
+      operationId: delete-employee-id
+      tags:
+        - Employees
+      #security:
+      #  - OAuth2:
+      #    - read
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '204': #No Content (employee deleted successfully)
+          $ref: '#/components/responses/204'
+        '400': #Bad Request
+          $ref: '#/components/responses/400'
+        '401': #Unauthorized
+          $ref: '#/components/responses/401'
+        '403': #Forbidden
+          $ref: '#/components/responses/403'
+        '404': #Not Found
+          $ref: '#/components/responses/404'
+        '409': #Conflict
+          $ref: '#/components/responses/409'
+        '500': #Internal Server Error
+          $ref: '#/components/responses/500'
+        '503': #Service Unavailable
+          $ref: '#/components/responses/503'
+        'default':
+          $ref: '#/components/responses/default'
+
+
+  '/employees/{employeeId}/email/validate':
+    description: 'This endpoint allows you to get a list of the employees in the company, add or delete an Employee or do another action'
+    parameters:
+      - $ref: '#/components/parameters/employeeId'
+    
+    post: #Seguridad desactivada de momento
+      description: "Validates de email of an employee. Sends the email of the employee which email is in the path and validates if exists or not"
+      summary: "Validates de email of an employee"
+      operationId: post-employee-validate-email
+      tags:
+        - Employees
+      #security:
+      #  - OAuth2:
+      #    - read
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  maxLength: 100
+                  pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                  description: Email of the employee.
+                  example: alice.smith@axpe.com
+              required:
+                - email
+              additionalProperties: false
+      responses:
+        '200': #Succesfull request (including the result of the validation)
+          $ref: '#/components/responses/200Message'
         '400': #Bad Request
           $ref: '#/components/responses/400'
         '401': #Unauthorized
@@ -157,74 +277,6 @@ paths:
           $ref: '#/components/responses/503'
         'default':
           $ref: '#/components/responses/default'
-
-    patch: ### OJO: No implementada!
-      description: "Create a new employee. Send the new employee's data in the request body"
-      summary: "Creates a new employee"
-      operationId: post-employees
-      tags:
-        - Employees
-      #security:
-      #  - OAuth2:
-      #    - read
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Employee'
-      responses:
-        '201': #Created (returns the new employee's information)
-          $ref: '#/components/responses/201'
-        '400': #Bad Request
-          $ref: '#/components/responses/400'
-        '401': #Unauthorized
-          $ref: '#/components/responses/401'
-        '403': #Forbidden
-          $ref: '#/components/responses/403'
-        '409': #Conflict
-          $ref: '#/components/responses/409'
-        '500': #Internal Server Error
-          $ref: '#/components/responses/500'
-        '503': #Service Unavailable
-          $ref: '#/components/responses/503'
-        'default':
-          $ref: '#/components/responses/default'
-
-    delete: ### OJO: No implementada!
-      description: "Create a new employee. Send the new employee's data in the request body"
-      summary: "Creates a new employee"
-      operationId: post-employees
-      tags:
-        - Employees
-      #security:
-      #  - OAuth2:
-      #    - read
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Employee'
-      responses:
-        '201': #Created (returns the new employee's information)
-          $ref: '#/components/responses/201'
-        '400': #Bad Request
-          $ref: '#/components/responses/400'
-        '401': #Unauthorized
-          $ref: '#/components/responses/401'
-        '403': #Forbidden
-          $ref: '#/components/responses/403'
-        '409': #Conflict
-          $ref: '#/components/responses/409'
-        '500': #Internal Server Error
-          $ref: '#/components/responses/500'
-        '503': #Service Unavailable
-          $ref: '#/components/responses/503'
-        'default':
-          $ref: '#/components/responses/default'
-
-
 
 
 
@@ -233,6 +285,21 @@ paths:
 #######################################
 
 components:
+
+  parameters:
+  #### Parameters - Employee ID:
+    employeeId:
+      name: employeeId
+      in: path
+      required: true
+      description: ID of an existing employee
+      schema:
+        type: integer
+        format: int32
+        maximum: 10000
+        minimum: 1
+
+
 
   #### Security Schemes
   securitySchemes:
@@ -302,20 +369,20 @@ components:
             - inactive
           description: 'Current status of the employee (e.g., pending, active, inactive).'
       required:
-        - id
         - firstName
         - lastName
         - lastName2
         - email
         - identification
         - phone
+      additionalProperties: false
 
 
-  #### Schemas - Employee (reduced) object:
-    EmployeeEssentialData:
-      title: EmployeeEssentialData
+#### Schemas - Employee (partial update version) object:
+    EmployeePartial:
+      title: Employee
       type: object
-      description: Object that describes a reduced version of an Employee entity
+      description: Object that describes an Employee entity for the PATCH operations
       properties:
         id:
           type: integer
@@ -336,13 +403,99 @@ components:
         lastName2:
           type: string
           maxLength: 50
-          pattern: '^[A-Z][a-z]*( [A-Z][a-z]*)*$'
+          pattern: '^^[A-Z][a-z]*( [A-Z][a-z]*)*$'
+          description: Second last name of the employee.
+        identification:
+          $ref: '#/components/schemas/Identification'
+        email:
+          type: string
+          format: email
+          maxLength: 100
+          pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+          description: Email of the employee.
+          example: alice.smith@axpe.com
+        incorporationDate:
+          type: string
+          maxLength: 10
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+          description: The date that the employee was hired.
+        phone:
+          type: string
+          maxLength: 20
+          pattern: '^\+\d{2}\d{9}$'
+          description: Phone number of the employee.
+        userStatus:
+          type: string
+          enum:
+            - pending
+            - active
+            - inactive
+          description: 'Current status of the employee (e.g., pending, active, inactive).'
+      additionalProperties: false
+
+
+  #### Schemas - Employee (reduced) object:
+    EmployeeEssentialData:
+      title: EmployeeEssentialData
+      type: object
+      description: Object that describes a reduced version of an Employee entity
+      properties:
+        id:
+          type: integer
+          format: int32
+          maximum: 10000
+          minimum: 1
+          description: Unique identifier for the given employee.
+        firstName:
+          type: string
+          maxLength: 50
+          pattern: '^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]*( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]*)*$'
+          description: First name of the employee.
+        lastName:
+          type: string
+          maxLength: 50
+          pattern: '^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]*( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]*)*$'
+          description: First last name of the employee.
+        lastName2:
+          type: string
+          maxLength: 50
+          pattern: '^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]*( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]*)*$'
           description: Second last name of the employee.
       required:
         - id
         - firstName
         - lastName
         - lastName2
+      additionalProperties: false
+
+    
+  #### Schemas - Employee List:
+    EmployeeList:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+          description: total number of items available (without pagination)
+        offset:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+          description: starting position of the current page
+        limit:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+          description: maximun number of items per page
+        items:
+          type: array
+          maxItems: 1000 ##42c
+          items:
+            $ref: '#/components/schemas/EmployeeEssentialData'
       additionalProperties: false
 
 
@@ -365,13 +518,36 @@ components:
       required:
         - value
         - type
+      additionalProperties: false
 
 
   #### Schemas - Messages:
-    Messages:
-      title: Messages
+    Message:
+      title: Message
       type: object
-      description: Model of message
+      description: Model of simple message response
+      properties:
+        messageTitle:
+          type: string
+          maxLength: 50
+          pattern: ^.{1,50}$
+          description: Title of the message
+        messageDescription:
+          type: string
+          maxLength: 200
+          pattern: ^.{1,200}$
+          description: Additional information about the error
+      required:
+        - messageTitle
+        - messageDescription
+      additionalProperties: false
+
+
+  #### Schemas - Error Messages:
+    ErrorMessage:
+      title: ErrorMessage
+      type: object
+      description: Model of error response
       properties:
         messageCode:
           type: string
@@ -385,32 +561,14 @@ components:
           description: Title of the message
         messageDescription:
           type: string
-          maxLength: 100
-          pattern: ^.{1,100}$
-          description: Body of the message
+          maxLength: 200
+          pattern: ^.{1,200}$
+          description: Additional information about the error
       required:
         - messageCode
         - messageTitle
         - messageDescription
-
-
-  #### Schemas - Errors:
-    ErrorMessage:
-      title: ErrorMessage
-      type: object
-      description: Model of error response
-      allOf:
-        - $ref: '#/components/schemas/Messages'
-        - type: object
-          properties:
-            errorDetails:
-              type: string
-              maxLength: 200
-              pattern: ^.{1,200}$
-              description: Additional information about the error
-          required:
-            - errorDetails
-          additionalProperties: false
+      additionalProperties: false
 
   #### Responses: 200List, 200Detail, 204, 400, 401, 403, 404, 500, 503, Default
   responses:
@@ -422,32 +580,7 @@ components:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              totalItems:
-                type: integer
-                format: int32
-                maximum: 1000
-                minimum: 0
-                description: total number of items available (without pagination)
-              offset:
-                type: integer
-                format: int32
-                maximum: 1000
-                minimum: 0
-                description: starting position of the current page
-              limit:
-                type: integer
-                format: int32
-                maximum: 1000
-                minimum: 0
-                description: maximun number of items per page
-              items:
-                type: array
-                maxItems: 1000 ##42c
-                items:
-                  $ref: '#/components/schemas/EmployeeEssentialData'
-            additionalProperties: false
+            $ref: '#/components/schemas/EmployeeList'
           examples:
             returnListOfEmployeesExample:
               $ref: '#/components/examples/example-employee-list'
@@ -464,6 +597,19 @@ components:
           examples:
             returnEmployeeInformationExample:
               $ref: '#/components/examples/example-employee-information'
+
+    '200Message':
+      description: successful response, returns the result of the validation
+      headers:
+        X-Request-ID:
+          $ref: '#/components/headers/XRequestIdHeader'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+          examples:
+            returnListOfEmployeesExample:
+              $ref: '#/components/examples/example-email-validation'
 
     '201':
       description: successful response, employee created, returns the information of the created employee
@@ -617,90 +763,84 @@ components:
     #### Examples - Errors:
     example-error400:
       value:
-        ErrorMessage:
-          - messageCode: '400'
-          - messageTitle: Bad Request
-          - messageDescription: Client has made an invalid request.
-          - errorDetails: The request could not be processed due to invalid input.
+        messageCode: '400'
+        messageTitle: Bad Request
+        messageDescription: The request could not be processed due to invalid input.
     example-error401:
       value:
-        ErrorMessage:
-          - messageCode: '401'
-          - messageTitle: Unauthorized
-          - messageDescription: Authentication is required or has failed.
-          - errorDetails: The provided API key is invalid.
+        messageCode: '401'
+        messageTitle: Unauthorized
+        messageDescription: Authentication is required or has failed.
     example-error403:
       value:
-        ErrorMessage:
-          - messageCode: '403'
-          - messageTitle: Forbidden
-          - messageDescription: The client does not have access rights to the content.
-          - errorDetails: You do not have permission to access this resource.
+        messageCode: '403'
+        messageTitle: Forbidden
+        messageDescription: You do not have permission to access this resource.
     example-error404:
       value:
-        ErrorMessage:
-          - messageCode: '404'
-          - messageTitle: Not Found
-          - messageDescription: Resource not found.
-          - errorDetails: The requested resource could not be found.
+        messageCode: '404'
+        messageTitle: Not Found
+        messageDescription: The requested resource could not be found.
     example-error409:
       value:
-        ErrorMessage:
-          - messageCode: '409'
-          - messageTitle: Conflict
-          - messageDescription: A conflict has occurred.
-          - errorDetails: There is already an employee with that email registered.
+        messageCode: '409'
+        messageTitle: Conflict
+        messageDescription: There is already an employee with that email registered.
     example-error500:
       value:
-        ErrorMessage:
-          - messageCode: '500'
-          - messageTitle: Internal Server Error
-          - messageDescription: The server encountered an unexpected condition.
-          - errorDetails: An unexpected error occurred. Please try again later.
+        messageCode: '500'
+        messageTitle: Internal Server Error
+        messageDescription: An unexpected error occurred. Please try again later.
     example-error503:
       value:
-        ErrorMessage:
-          - messageCode: '503'
-          - messageTitle: Service Unavailable
-          - messageDescription: The server is temporarily unable to handle the request.
-          - errorDetails: The server is currently undergoing maintenance. Please try again later.
+        messageCode: '503'
+        messageTitle: Service Unavailable
+        messageDescription: The server is temporarily unable to handle the request.
     example-errorDefault:
       value:
-        ErrorMessage:
-          - messageCode: 'default'
-          - messageTitle: Service Unavailable
-          - messageDescription: The server is temporarily unable to handle the request.
-          - errorDetails: The server is currently undergoing maintenance. Please try again later.
+        messageCode: 'default'
+        messageTitle: Unexpected Error
+        messageDescription: An unexpected error occurred. Please try again later or contact support if the problem persists.
     
     #### Examples - List of employees:
     example-employee-list:
       value:
-        - id: 34
-          firstName: "Lucas"
-          lastName: "Correa"
-          lastName2: "De la Iglesia"
-        - id: 35
-          firstName: "Rebeca"
-          lastName: "García"
-          lastName2: "Zamorano"
-        - id: 36
-          firstName: "Andrés"
-          lastName: "Marcos"
-          lastName2: "Bracamonte"
-        - id: 37
-          firstName: "Francisco"
-          lastName: "Martín"
-          lastName2: "Martín"
+        totalItems: 100
+        offset: 0
+        limit: 10
+        items:
+          - id: 34
+            firstName: "Lucas"
+            lastName: "Correa"
+            lastName2: "De La Iglesia"
+          - id: 35
+            firstName: "Rebeca"
+            lastName: "Garcia"
+            lastName2: "Zamorano"
+          - id: 36
+            firstName: "Andrés"
+            lastName: "Marcos"
+            lastName2: "Bracamonte"
+          - id: 37
+            firstName: "Francisco"
+            lastName: "Martín"
+            lastName2: "Martín"
     
     #### Examples - Employee information:
     example-employee-information:
       value:
-        - id: 34
-          firstName: "Lucas"
-          lastName: "Correa"
-          lastName2: "De la Iglesia"
-          email: "lcorread@axpe.com"
-          identification:
-            - type: NIF
-            - value: 12345678X
-          phone: "+34654321987"
+        id: 34
+        firstName: "Lucas"
+        lastName: "Correa"
+        lastName2: "De La Iglesia"
+        email: "lcorread@axpe.com"
+        identification:
+          type: NIF
+          value: "12345678X"
+        phone: "+34654321987"
+
+    #### Examples - Email validation:
+    example-email-validation:
+      value:
+        messageTitle: "Email OK"
+        messageDescription: "Email validation has returned a successful result"
